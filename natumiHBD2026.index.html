@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>川中子奈月心様　生誕イラスト企画2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#03050c;
+    --bg-1:#060a17;
+    --bg-2:#0a1226;
+    --card-bg:rgba(14,20,40,0.55);
+    --card-border:rgba(110,150,255,0.22);
+    --accent:#6ea8ff;
+    --accent-soft:#9cc2ff;
+    --text-main:#e8ecfa;
+    --text-sub:#9aa6c9;
+    --glow:rgba(110,150,255,0.35);
+  }
+
+  *{ box-sizing:border-box; }
+
+  html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+    background:
+      radial-gradient(ellipse at 20% 0%, var(--bg-2) 0%, var(--bg-1) 45%, var(--bg-0) 100%);
+    color:var(--text-main);
+    font-family:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Hiragino Sans",
+      "Yu Gothic","Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight:700;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* 星背景 */
+  #stars-layer{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    pointer-events:none;
+    overflow:hidden;
+  }
+  .star{
+    position:absolute;
+    border-radius:50%;
+    background:#ffffff;
+    box-shadow:0 0 6px 1px rgba(255,255,255,0.8);
+    animation-name:twinkle;
+    animation-iteration-count:infinite;
+    animation-timing-function:ease-in-out;
+  }
+  @keyframes twinkle{
+    0%,100%{ opacity:0.15; transform:scale(0.85); }
+    50%{ opacity:1; transform:scale(1.15); }
+  }
+
+  main{
+    position:relative;
+    z-index:1;
+    max-width:880px;
+    margin:0 auto;
+    padding:56px 20px 80px;
+  }
+
+  /* フェードイン */
+  .fade-in{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.9s ease, transform 0.9s ease;
+  }
+  .fade-in.visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ヘッダー */
+  header{
+    text-align:center;
+    margin-bottom:48px;
+  }
+  .kicker{
+    display:inline-block;
+    letter-spacing:0.2em;
+    font-size:0.75rem;
+    font-weight:700;
+    color:var(--accent-soft);
+    text-transform:uppercase;
+    margin-bottom:14px;
+    opacity:0.85;
+  }
+  h1{
+    font-size:clamp(1.5rem, 4.5vw, 2.4rem);
+    line-height:1.5;
+    margin:0 0 12px;
+    font-weight:900;
+    background:linear-gradient(180deg, #ffffff 0%, var(--accent-soft) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:0 0 30px var(--glow);
+  }
+  .subtitle{
+    color:var(--text-sub);
+    font-size:0.95rem;
+    font-weight:600;
+    letter-spacing:0.05em;
+  }
+
+  /* カード共通 */
+  .card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:18px;
+    padding:28px 26px;
+    margin-bottom:28px;
+    backdrop-filter:blur(6px);
+    box-shadow:0 0 0 1px rgba(255,255,255,0.02),
+               0 20px 40px -20px rgba(0,0,0,0.6),
+               0 0 40px -18px var(--glow);
+}
+
+  .card h2{
+    font-size:1.05rem;
+    font-weight:800;
+    margin:0 0 16px;
+    color:var(--accent-soft);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .card h2::before{
+    content:"★";
+    font-size:0.85em;
+    color:var(--accent);
+    text-shadow:0 0 8px 2px var(--glow);
+    flex-shrink:0;
+    line-height:1;
+  }
+
+  /* 注意事項 */
+  .notice-list{
+    margin:0;
+    padding-left:0;
+    list-style:none;
+    color:var(--text-sub);
+    font-size:0.92rem;
+    font-weight:600;
+    line-height:1.9;
+  }
+  .notice-list li{
+    padding-left:1.2em;
+    position:relative;
+    margin-bottom:8px;
+  }
+  .notice-list li::before{
+    content:"・";
+    position:absolute;
+    left:0;
+    color:var(--accent-soft);
+  }
+  .notice-list li:last-child{ margin-bottom:0; }
+
+  /* ギャラリー */
+  .gallery-intro{
+    text-align:center;
+    color:var(--text-sub);
+    font-size:0.9rem;
+    font-weight:600;
+    margin-bottom:26px;
+  }
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:20px;
+  }
+  .illust-card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 16px 32px -20px rgba(0,0,0,0.7);
+    transition:transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  }
+  .illust-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--accent);
+    box-shadow:0 20px 40px -18px rgba(0,0,0,0.75), 0 0 30px -8px var(--glow);
+  }
+  .illust-thumb{
+    width:100%;
+    aspect-ratio:1/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+      linear-gradient(135deg, rgba(110,150,255,0.12), rgba(255,255,255,0.02));
+    color:var(--text-sub);
+    font-size:0.8rem;
+    letter-spacing:0.05em;
+    text-align:center;
+    padding:12px;
+  }
+  .illust-thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .illust-info{
+    padding:14px 16px;
+    border-top:1px solid var(--card-border);
+  }
+  .illust-info .artist{
+    font-size:0.85rem;
+    font-weight:700;
+    color:var(--text-main);
+    margin:0 0 4px;
+  }
+  .illust-info .artist-link{
+    font-size:0.78rem;
+    font-weight:700;
+    color:var(--accent-soft);
+    text-decoration:none;
+  }
+  .illust-info .artist-link:hover{
+    text-decoration:underline;
+  }
+
+  /* SNS */
+  .sns-section{
+    text-align:center;
+  }
+  .sns-link{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 26px;
+    border-radius:999px;
+    border:1px solid var(--card-border);
+    background:rgba(255,255,255,0.03);
+    color:var(--text-main);
+    text-decoration:none;
+    font-size:0.95rem;
+    font-weight:700;
+    letter-spacing:0.05em;
+    transition:all 0.3s ease;
+  }
+  .sns-link:hover{
+    border-color:var(--accent);
+    box-shadow:0 0 24px -6px var(--glow);
+    color:#fff;
+  }
+  .sns-link svg{
+    width:16px;
+    height:16px;
+    fill:currentColor;
+  }
+
+  footer{
+    text-align:center;
+    margin-top:56px;
+    color:var(--text-sub);
+    font-size:0.75rem;
+    font-weight:600;
+    line-height:1.8;
+    opacity:0.7;
+  }
+
+  @media (max-width:480px){
+    main{ padding:40px 14px 60px; }
+    .card{ padding:22px 18px; border-radius:14px; }
+    .gallery-grid{ gap:14px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="stars-layer"></div>
+
+<main>
+
+  <header class="fade-in">
+    <span class="kicker">Illustration Project 2026</span>
+    <h1>川中子奈月心様<br>生誕イラスト企画2026</h1>
+  </header>
+
+  <section class="card fade-in">
+    <h2>注意事項</h2>
+    <ul class="notice-list">
+      <li>当サイトは川中子奈月心様のお誕生日をお祝いするために作成された非公式サイトになります。運営会社様ならびにご本人様とは一切関係ございません。</li>
+      <li>掲載イラストの著作権は各絵描き様に帰属します。無断転載及び二次使用はご遠慮ください。</li>
+    </ul>
+  </section>
+
+  <section class="fade-in">
+    <div class="card">
+      <h2>投稿イラスト</h2>
+      <p class="gallery-intro">お祝いのイラストを準備中です。追加され次第、随時掲載していきます。</p>
+      <div class="gallery-grid" id="gallery-grid">
+        <!--
+          イラストを追加する場合は、下記のカードをコピーして
+          .illust-thumb 内の img タグに画像を指定し、
+          artist 名とリンクを書き換えてください。
+
+          <div class="illust-card">
+            <div class="illust-thumb">
+              <img src="images/sample.jpg" alt="イラストタイトル">
+            </div>
+            <div class="illust-info">
+              <p class="artist">絵師名</p>
+              <a class="artist-link" href="https://x.com/xxxxx" target="_blank" rel="noopener noreferrer">Xで見る →</a>
+            </div>
+          </div>
+        -->
+        <div class="illust-card">
+          <div class="illust-thumb">準備中</div>
+          <div class="illust-info">
+            <p class="artist">Coming soon</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card sns-section fade-in">
+    <h2 style="justify-content:center;">SNS</h2>
+    <a class="sns-link" href="https://x.com/@kn_hbdIL" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.7 8.8L23.3 22h-7.2l-5.6-7.3L4 22H1l8.2-9.4L0.7 2h7.4l5.1 6.7L18.9 2zm-1.3 18h2L6.5 4H4.4l13.2 16z"/></svg>
+      X (Twitter)
+    </a>
+  </section>
+
+  <footer class="fade-in">
+    © 2026 川中子奈月心様　生誕イラスト企画 / 非公式ファンサイト
+  </footer>
+
+</main>
+
+<script>
+  // 星を生成
+  (function(){
+    const layer = document.getElementById('stars-layer');
+    const count = window.innerWidth < 600 ? 70 : 140;
+    const frag = document.createDocumentFragment();
+    for(let i=0;i<count;i++){
+      const s = document.createElement('div');
+      s.className = 'star';
+      const size = (Math.random()*2 + 1).toFixed(1);
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      s.style.top = (Math.random()*100) + '%';
+      s.style.left = (Math.random()*100) + '%';
+      s.style.animationDuration = (Math.random()*3 + 2).toFixed(2) + 's';
+      s.style.animationDelay = (Math.random()*4).toFixed(2) + 's';
+      frag.appendChild(s);
+    }
+    layer.appendChild(frag);
+  })();
+
+  // スクロールでフェードイン
+  (function(){
+    const targets = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    targets.forEach(t=>observer.observe(t));
+  })();
+</script>
+
+</body>
+</html>
