@@ -52,7 +52,10 @@
     position:absolute;
     background:#ffffff;
     clip-path:polygon(50% 0%, 61% 35%, 100% 50%, 61% 65%, 50% 100%, 39% 65%, 0% 50%, 39% 35%);
-    filter:drop-shadow(0 0 3px rgba(255,255,255,0.9));
+    filter:
+      drop-shadow(0 0 3px rgba(255,255,255,0.95))
+      drop-shadow(0 0 7px rgba(255,255,255,0.6))
+      drop-shadow(0 0 14px rgba(140,170,255,0.5));
     animation-name:twinkle;
     animation-iteration-count:infinite;
     animation-timing-function:ease-in-out;
@@ -392,7 +395,7 @@
     for(let i=0;i<count;i++){
       const s = document.createElement('div');
       s.className = 'star';
-      const size = (Math.random()*2.5 + 2.5).toFixed(1);
+      const size = (Math.random()*4 + 4).toFixed(1);
       s.style.width = size + 'px';
       s.style.height = size + 'px';
       s.style.top = (Math.random()*100) + '%';
