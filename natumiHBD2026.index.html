@@ -295,10 +295,11 @@
   .loading-star{
     width:26px;
     height:26px;
-    background:#ffffff;
-    clip-path:polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     filter:drop-shadow(0 0 8px var(--glow));
     animation:loading-pulse 1.1s ease-in-out infinite;
+  }
+  .loading-star path{
+    fill:#ffffff;
   }
   @keyframes loading-pulse{
     0%,100%{ opacity:0.3; transform:scale(0.7); }
@@ -315,7 +316,9 @@
 <body>
 
 <div id="loading-screen">
-  <div class="loading-star"></div>
+  <svg class="loading-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M47.36 11.86 Q50 4 52.65 11.86 L57.94 27.58 Q60.58 35.44 68.87 35.53 L85.46 35.70 Q93.75 35.79 87.09 40.73 L73.78 50.62 Q67.12 55.56 69.60 63.47 L74.56 79.30 Q77.04 87.21 70.28 82.41 L56.76 72.80 Q50 68 43.24 72.80 L29.72 82.41 Q22.96 87.21 25.44 79.30 L30.40 63.47 Q32.88 55.56 26.22 50.62 L12.91 40.73 Q6.25 35.79 14.54 35.70 L31.13 35.53 Q39.42 35.44 42.07 27.58 Z"/>
+  </svg>
   <p class="loading-text">Now loading...</p>
 </div>
 
