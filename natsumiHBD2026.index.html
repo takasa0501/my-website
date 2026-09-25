@@ -312,7 +312,10 @@
   /* ローディング画面 */
   #loading-screen{
     position:fixed;
-    inset:0;
+    /* アプリ内ブラウザ（Xなど）でツールバーの出し入れにより画面の高さが変わっても
+       下端が切れないよう、下に120pxはみ出させる（padding で中央の位置は変えない） */
+    inset:0 0 -120px 0;
+    padding-bottom:120px;
     z-index:100;
     display:flex;
     flex-direction:column;
@@ -322,6 +325,10 @@
     background:
       radial-gradient(ellipse at 20% 0%, var(--bg-2) 0%, var(--bg-1) 45%, var(--bg-0) 100%);
     transition:opacity 0.6s ease;
+  }
+  /* 読み込み中はサイト本体を隠しておく（読み込み画面のすき間から見えないように） */
+  body.is-loading main{
+    visibility:hidden;
   }
   #loading-screen.hidden{
     opacity:0;
@@ -465,7 +472,7 @@
   }
 </style>
 </head>
-<body>
+<body class="is-loading">
 
 <div id="loading-screen">
   <div class="loading-star-wrap">
@@ -708,6 +715,7 @@
         loadingScreen.classList.add('welcome-in');
         setTimeout(()=>{
           loadingScreen.classList.add('hidden');
+          document.body.classList.remove('is-loading');
         }, 1800);
       }, 600);
     }, 3500);
