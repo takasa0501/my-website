@@ -696,27 +696,6 @@
     targets.forEach(t=>observer.observe(t));
   })();
 
-  // 確認用：URL に ?debug を付けたときだけ、ページの版と切り替わった時刻を画面の隅に表示する
-  (function(){
-    if(!/[?&]debug\b/.test(location.search)) return;
-    const box = document.createElement('div');
-    box.style.cssText = 'position:fixed;left:8px;bottom:8px;z-index:1000;padding:8px 10px;border-radius:8px;background:rgba(0,0,0,0.8);color:#fff;font:12px/1.5 monospace;white-space:pre;pointer-events:none';
-    document.body.appendChild(box);
-    const lines = ['版: 2026-09-25 切替調整3'];
-    const lt = getComputedStyle(document.querySelector('.loading-text'));
-    lines.push('消え方: ' + lt.transitionDuration + ' ' + lt.transitionTimingFunction);
-    const render = ()=>{ box.textContent = lines.join('\n'); };
-    render();
-    const screen = document.getElementById('loading-screen');
-    let prev = '';
-    new MutationObserver(()=>{
-      const added = screen.className.split(' ').filter(c=>c && !prev.split(' ').includes(c));
-      prev = screen.className;
-      added.forEach(c=>lines.push(c + ': ' + (performance.now()/1000).toFixed(2) + '秒'));
-      render();
-    }).observe(screen, { attributes:true, attributeFilter:['class'] });
-  })();
-
   // ローディング画面：Welcome! を表示してから隠す
   (function(){
     const loadingScreen = document.getElementById('loading-screen');
