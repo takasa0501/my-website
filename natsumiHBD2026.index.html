@@ -403,7 +403,8 @@
     margin:0;
   }
   .loading-text{
-    transition:opacity 0.5s ease;
+    /* ease-in：見えている時間を保ち、最後にすっと消す（ぼんやり残らない） */
+    transition:opacity 0.3s ease-in;
   }
   .welcome-text{
     display:none;
@@ -414,7 +415,8 @@
     text-shadow:0 0 16px var(--glow);
     opacity:0;
     transform:translateY(6px);
-    transition:opacity 0.4s ease, transform 0.4s ease;
+    /* ease-out：出始めからはっきり見えるようにする */
+    transition:opacity 0.3s ease-out, transform 0.3s ease-out;
   }
   /* Now loading... を消してから、取り除いた後に Welcome! を出す（同時に表示されることはない） */
   #loading-screen.text-out .loading-text{
@@ -707,7 +709,7 @@
         setTimeout(()=>{
           loadingScreen.classList.add('hidden');
         }, 1800);
-      }, 800);
+      }, 600);
     }, 3500);
   })();
 </script>
