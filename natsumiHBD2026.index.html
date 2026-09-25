@@ -461,7 +461,7 @@
 
           <div class="illust-card">
             <div class="illust-thumb">
-              <img src="images/sample.jpg" alt="イラストタイトル">
+              <img src="images/sample.jpg" alt="イラストタイトル" width="画像の幅" height="画像の高さ" loading="lazy" decoding="async">
             </div>
             <div class="illust-info">
               <p class="artist">絵師名</p>
@@ -471,7 +471,7 @@
         -->
         <div class="illust-card">
           <div class="illust-thumb">
-            <img src="images/sari_01.jpeg" alt="イラスト">
+            <img src="images/sari_01.jpeg" alt="イラスト" width="2048" height="2048" loading="lazy" decoding="async">
           </div>
           <div class="illust-info">
             <p class="artist">さり👾🍠 様</p>
@@ -479,7 +479,7 @@
         </div>
         <div class="illust-card">
           <div class="illust-thumb">
-            <img src="images/mizuki_01.jpg" alt="イラスト">
+            <img src="images/mizuki_01.jpg" alt="イラスト" width="2048" height="2048" loading="lazy" decoding="async">
           </div>
           <div class="illust-info">
             <p class="artist">みづきぃ 様</p>
@@ -487,7 +487,7 @@
         </div>
         <div class="illust-card">
           <div class="illust-thumb">
-            <img src="images/pusotaro_01.jpeg" alt="イラスト">
+            <img src="images/pusotaro_01.jpeg" alt="イラスト" width="3072" height="2304" loading="lazy" decoding="async">
           </div>
           <div class="illust-info">
             <p class="artist">ぷそたろ 様</p>
@@ -495,7 +495,7 @@
         </div>
         <div class="illust-card">
           <div class="illust-thumb">
-            <img src="images/mikuchan_01.jpg" alt="イラスト">
+            <img src="images/mikuchan_01.jpg" alt="イラスト" width="1378" height="2039" loading="lazy" decoding="async">
           </div>
           <div class="illust-info">
             <p class="artist">みくちゃん 様</p>
@@ -503,7 +503,7 @@
         </div>
         <div class="illust-card">
           <div class="illust-thumb">
-            <img src="images/rionappa_01.jpeg" alt="イラスト">
+            <img src="images/rionappa_01.jpeg" alt="イラスト" width="2039" height="2512" loading="lazy" decoding="async">
           </div>
           <div class="illust-info">
             <p class="artist">ﾘｵﾅｯﾊﾟ 様</p>
@@ -511,7 +511,7 @@
         </div>
         <div class="illust-card">
           <div class="illust-thumb">
-            <img src="images/ei_01.png" alt="イラスト">
+            <img src="images/ei_01.png" alt="イラスト" width="1536" height="2048" loading="lazy" decoding="async">
           </div>
           <div class="illust-info">
             <p class="artist">えい 様</p>
@@ -519,7 +519,7 @@
         </div>
         <div class="illust-card">
           <div class="illust-thumb">
-            <img src="images/rio_01.jpg" alt="イラスト">
+            <img src="images/rio_01.jpg" alt="イラスト" width="1536" height="2048" loading="lazy" decoding="async">
           </div>
           <div class="illust-info">
             <p class="artist">rio 様</p>
@@ -527,7 +527,7 @@
         </div>
         <div class="illust-card">
           <div class="illust-thumb">
-            <img src="images/banken_01.jpg" alt="イラスト">
+            <img src="images/banken_01.jpg" alt="イラスト" width="2048" height="2048" loading="lazy" decoding="async">
           </div>
           <div class="illust-info">
             <p class="artist">ばんけん 様</p>
@@ -535,7 +535,7 @@
         </div>
         <div class="illust-card">
           <div class="illust-thumb">
-            <img src="images/nanamin_01.jpg" alt="イラスト">
+            <img src="images/nanamin_01.jpg" alt="イラスト" width="1536" height="2048" loading="lazy" decoding="async">
           </div>
           <div class="illust-info">
             <p class="artist">ななみん 様</p>
@@ -543,7 +543,7 @@
         </div>
         <div class="illust-card">
           <div class="illust-thumb">
-            <img src="images/katsuodashi_01.jpg" alt="イラスト">
+            <img src="images/katsuodashi_01.jpg" alt="イラスト" width="2980" height="3797" loading="lazy" decoding="async">
           </div>
           <div class="illust-info">
             <p class="artist">かつおだし🐟 様</p>
@@ -551,7 +551,7 @@
         </div>
         <div class="illust-card">
           <div class="illust-thumb">
-            <img src="images/takasa_01.jpg" alt="イラスト">
+            <img src="images/takasa_01.jpg" alt="イラスト" width="3072" height="4096" loading="lazy" decoding="async">
           </div>
           <div class="illust-info">
             <p class="artist">たかさ</p>
@@ -607,6 +607,8 @@
   // スクロールでフェードイン
   (function(){
     const targets = document.querySelectorAll('.fade-in');
+    // 縦長の要素（ギャラリーなど）でも確実に表示されるよう、割合ではなく
+    // 「少しでも画面に入ったら（下端から40px入った時点で）」表示する
     const observer = new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting){
@@ -614,7 +616,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
     targets.forEach(t=>observer.observe(t));
   })();
 
